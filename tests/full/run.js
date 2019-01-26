@@ -8,9 +8,11 @@ var TEST_NAME = process.env.TEST_NAME;
 try
 {
     var V86 = require("../../build/libv86.js").V86Starter;
+    //var V86 = require("build/libv86.js").V86Starter;
 }
 catch(e)
 {
+	console.error(e);
     console.error("Failed to import build/libv86.js. Run `make build/libv86.js first.");
     process.exit(1);
 }
@@ -34,7 +36,7 @@ function line_to_text(screen, y)
 
 function string_to_bytearray(str)
 {
-    return new Uint8Array(str.split("").map(chr => chr.charCodeAt(0)));
+    return new Uint8Array(str.split("").map(function(chr) { return chr.charCodeAt(0); }));
 }
 
 function bytearray_to_string(arr)
@@ -190,7 +192,7 @@ if(cluster.isMaster)
 
     if(TEST_NAME)
     {
-        tests = tests.filter(test => test.name === TEST_NAME);
+        tests = tests.filter(function(test) { return test.name === TEST_NAME; });
     }
 
     var nr_of_cpus = Math.min(Math.round(os.cpus().length / 2) || 1, tests.length, MAX_PARALLEL_TESTS);
@@ -247,7 +249,7 @@ function run_test(test, done)
 {
     console.log("Starting test: %s", test.name);
 
-    let image = test.fda || test.hda || test.cdrom;
+    var image = test.fda || test.hda || test.cdrom;
     console.assert(image, "Bootable drive expected");
 
     if(!fs.existsSync(image))
@@ -420,7 +422,7 @@ function run_test(test, done)
 
         if(!check_text_test_done())
         {
-            let expected = test.expected_texts[0];
+            var expected = test.expected_texts[0];
             if(x < expected.length && bytearray_starts_with(line, expected))
             {
                 test.expected_texts.shift();
@@ -430,7 +432,7 @@ function run_test(test, done)
 
         if(on_text.length)
         {
-            let expected = on_text[0].text;
+            var expected = on_text[0].text;
             if(x < expected.length && bytearray_starts_with(line, expected))
             {
                 var action = on_text.shift();

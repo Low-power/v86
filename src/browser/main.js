@@ -693,6 +693,7 @@
 
             "screen_container": $("screen_container"),
             "serial_container": $("serial"),
+            "serial_terminal_container":$("serial_terminal_container"),
 
             "boot_order": settings.boot_order || parseInt($("boot_order").value, 16) || 0,
 
@@ -753,6 +754,7 @@
         $("runtime_options").style.display = "block";
         $("runtime_infos").style.display = "block";
         $("screen_container").style.display = "block";
+        $("serial_terminal_container").style.display = "block";
 
         if(settings.filesystem)
         {

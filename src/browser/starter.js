@@ -128,9 +128,9 @@ function V86Starter(options)
         settings.enable_ne2k = true;
     }
 
-    if(!options["disable_keyboard"])
+    if(!options["disable_keyboard"] && options["screen_container"])
     {
-        this.keyboard_adapter = new KeyboardAdapter(adapter_bus);
+        this.keyboard_adapter = new KeyboardAdapter(options["screen_container"], adapter_bus);
     }
     if(!options["disable_mouse"])
     {
@@ -150,6 +150,15 @@ function V86Starter(options)
     {
         this.serial_adapter = new SerialAdapter(options["serial_container"], adapter_bus);
     }
+
+	if(options["serial_terminal_container"]) {
+		console.log("111");
+		try {
+		this.serial_terminal_adapter = new SerialTerminalAdapter(options["serial_terminal_container"], adapter_bus, 80, 24);
+		} catch(e) {
+		alert(e);
+		}
+	}
 
     if(!options["disable_speaker"])
     {

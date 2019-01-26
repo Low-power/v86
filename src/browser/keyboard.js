@@ -11,7 +11,7 @@ var SCAN_CODE_RELEASE = 0x80;
  *
  * @param {BusConnector} bus
  */
-function KeyboardAdapter(bus)
+function KeyboardAdapter(screen_container, bus)
 {
     var
         /**
@@ -249,9 +249,14 @@ function KeyboardAdapter(bus)
         }
         this.destroy();
 
+/*
         window.addEventListener("keyup", keyup_handler, false);
         window.addEventListener("keydown", keydown_handler, false);
         window.addEventListener("blur", blur_handler, false);
+*/
+		screen_container.addEventListener("keyup", keyup_handler, false);
+		screen_container.addEventListener("keydown", keydown_handler, false);
+		screen_container.addEventListener("blur", blur_handler, false);
     };
     this.init();
 
@@ -300,7 +305,8 @@ function KeyboardAdapter(bus)
         {
             // className shouldn't be hardcoded here
             return e.target.className === "phone_keyboard" ||
-                (e.target.nodeName !== "INPUT" && e.target.nodeName !== "TEXTAREA");
+                (e.target.nodeName !== "INPUT" && e.target.nodeName !== "TEXTAREA"/* &&
+			e.target.id !== "serial_terminal_container" && e.target.className != "term"*/);
         }
         else
         {
