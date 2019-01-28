@@ -185,7 +185,7 @@
             {
                 id: "archlinux",
                 state: {
-                    "url": HOST + "images/v86state.bin",
+                    "url": HOST + "data/v86state.bin",
                     "size": 142770436,
                 },
                 name: "Arch Linux",
@@ -194,14 +194,14 @@
 
                 // required for restoring state, should not be used when booted on 9p
                 hda: {
-                    "url": HOST + "images/arch3.img",
+                    "url": HOST + "data/arch3.img",
                     "size": 16 * 1024 * 1024 * 1024,
                     "async": true,
                 },
 
                 filesystem: {
                     "basefs": {
-                        "url": HOST + "images/fs.json",
+                        "url": HOST + "data/fs.json",
                         "size": 10232633,
                     },
                     "baseurl": HOST + "arch/",
@@ -210,7 +210,7 @@
             {
                 id: "msdos",
                 hda: {
-                    "url": HOST + "images/msdos.img",
+                    "url": HOST + "data/msdos.img",
                     "size": 8 * 1024 * 1024,
                 },
                 boot_order: 0x132,
@@ -219,7 +219,7 @@
             {
                 id: "freedos",
                 fda: {
-                    "url": HOST + "images/freedos722.img",
+                    "url": HOST + "data/freedos722.img",
                     "size": 737280,
                 },
                 name: "FreeDOS",
@@ -227,11 +227,11 @@
             {
                 id: "oberon",
                 fda: {
-                    "url": HOST + "images/oberon-boot.dsk",
+                    "url": HOST + "data/oberon-boot.dsk",
                     "size": 1440 * 1024,
                 },
                 hda: {
-                    "url": HOST + "images/oberon.dsk",
+                    "url": HOST + "data/oberon.dsk",
                     "size": 41943040,
                 },
                 name: "Oberon",
@@ -239,7 +239,7 @@
             {
                 id: "windows1",
                 fda: {
-                    "url": HOST + "images/windows101.img",
+                    "url": HOST + "data/windows101.img",
                     "size": 1474560,
                 },
                 name: "Windows",
@@ -247,7 +247,7 @@
             {
                 id: "linux26",
                 cdrom: {
-                    "url": HOST + "images/linux.iso",
+                    "url": HOST + "data/linux.iso",
                     "size": 5666816,
                 },
                 name: "Linux",
@@ -255,7 +255,7 @@
             {
                 id: "linux3",
                 cdrom: {
-                    "url": HOST + "images/linux3.iso",
+                    "url": HOST + "data/linux3.iso",
                     "size": 8624128,
                 },
                 name: "Linux",
@@ -265,7 +265,7 @@
                 id: "kolibrios",
                 fda: {
                     "url": (ON_LOCALHOST || ON_HTTPS) ?
-                            "images/kolibri.img" :
+                            "data/kolibri.img" :
                             "//builds.kolibrios.org/eng/data/data/kolibri.img",
                     "size": 1474560,
                 },
@@ -274,7 +274,7 @@
             {
                 id: "kolibrios-fallback",
                 fda: {
-                    "url": HOST + "images/kolibri.img",
+                    "url": HOST + "data/kolibri.img",
                     "size": 1474560,
                 },
                 name: "KolibriOS",
@@ -282,7 +282,7 @@
             {
                 id: "openbsd",
                 fda: {
-                    "url": HOST + "images/openbsd.img",
+                    "url": HOST + "data/openbsd.img",
                     "size": 1474560,
                 },
                 name: "OpenBSD",
@@ -290,7 +290,7 @@
             {
                 id: "solos",
                 fda: {
-                    "url": HOST + "images/os8.dsk",
+                    "url": HOST + "data/os8.dsk",
                     "size": 1474560,
                 },
                 name: "Sol OS",
@@ -298,7 +298,7 @@
             {
                 id: "dexos",
                 cdrom: {
-                    "url": HOST + "images/DexOSv6.iso",
+                    "url": HOST + "data/DexOSv6.iso",
                     "size": 1837056,
                 },
                 name: "DexOS",
@@ -306,7 +306,7 @@
             {
                 id: "bootchess",
                 fda: {
-                    "url": HOST + "images/bootchess.img",
+                    "url": HOST + "data/bootchess.img",
                 },
                 name: "Bootchess",
             },
@@ -314,13 +314,13 @@
                 id: "windows98",
                 memory_size: 64 * 1024 * 1024,
                 hda: {
-                    "url": HOST + "images/windows98.img",
+                    "url": HOST + "data/windows98.img",
                     "async": true,
                     "size": 300 * 1024 * 1024,
                 },
                 name: "Windows 98",
                 state: {
-                    "url": HOST + "images/windows98_state.bin",
+                    "url": HOST + "data/windows98_state.bin",
                     "size": 75705744,
                 },
             },
@@ -328,13 +328,13 @@
                 id: "windows95",
                 memory_size: 32 * 1024 * 1024,
                 hda: {
-                    "url": HOST + "images/W95.IMG",
+                    "url": HOST + "data/W95.IMG",
                     "size": 242049024,
                     "async": true,
                 },
                 name: "Windows 95",
                 state: {
-                    "url": HOST + "images/windows95_state.bin",
+                    "url": HOST + "data/windows95_state.bin",
                     "size": 42151316,
                 },
             },
@@ -342,12 +342,12 @@
                 id: "freebsd",
                 memory_size: 128 * 1024 * 1024,
                 state: {
-                    "url": HOST + "images/freebsd_state.bin",
+                    "url": HOST + "data/freebsd_state.bin",
                     "size": 142815292,
                 },
                 hda: {
                     "url": ON_LOCALHOST ? "../v86-images/os/freebsd3.img" :
-                                          OTHER_HOST + "images/freebsd3.img",
+                                          OTHER_HOST + "data/freebsd3.img",
                     "size": 17179869184,
                     "async": true,
                 },
@@ -357,11 +357,11 @@
                 id: "reactos",
                 memory_size: 256 * 1024 * 1024,
                 cdrom: {
-                    "url": HOST + "images/ReactOS-0.4.9-RC-Live.iso",
+                    "url": HOST + "data/ReactOS-0.4.9-RC-Live.iso",
                     "async": true,
                 },
                 state: {
-                    "url": HOST + "images/reactos_state.bin",
+                    "url": HOST + "data/reactos_state.bin",
                     "size": 276971224,
                 },
                 name: "ReactOS",

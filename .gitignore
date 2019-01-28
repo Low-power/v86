@@ -6,7 +6,6 @@ tests/qemu/test-i386
 *.map
 build/
 closure-compiler/
-images/
 *.bak
 *.orig
 *.o

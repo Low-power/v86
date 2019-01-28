@@ -298,8 +298,8 @@ Term.prototype.refresh = function(ymin, ymax)
                             bg = tmp;
                         }
                         if (bold) {
-                            /* metrics are not OK for all fonts, so disabled */
-                            /* outline += 'font-weight:bold;'; */
+                            /* Warning: metrics are not OK for all fonts */
+                            outline += 'font-weight:bold;';
                             /* use the bright color */
                             if (fg < 8)
                                 fg += 8;
