@@ -699,6 +699,8 @@
 
             "network_relay_url": "wss://relay.widgetry.org/",
             //"network_relay_url": "ws://localhost:8001/",
+		//"wsppp_url":"ws://" + location.host + "/",
+		"wsppp_url":"ws://10.1.107.1:7998/",
 
             "bios": bios,
             "vga_bios": vga_bios,

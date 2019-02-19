@@ -152,12 +152,15 @@ function V86Starter(options)
     }
 
 	if(options["serial_terminal_container"]) {
-		console.log("111");
 		try {
 		this.serial_terminal_adapter = new SerialTerminalAdapter(options["serial_terminal_container"], adapter_bus, 80, 24);
 		} catch(e) {
 		alert(e);
 		}
+	}
+
+	if(options["wsppp_url"]) {
+		this.serial_websocket_adapter = new SerialWebSocketAdapter(options["wsppp_url"], adapter_bus, 1);
 	}
 
     if(!options["disable_speaker"])
@@ -859,8 +862,8 @@ V86Starter.prototype.serial_send_bytes = function(unit, data) {
  */
 V86Starter.prototype.serial_send_string = function(unit, s) {
 	var target = "serial" + String(unit) + "-input";
-	for(var i = 0; i < data.length; i++) {
-		this.bus.send(target, data.charCodeAt(i));
+	for(var i = 0; i < s.length; i++) {
+		this.bus.send(target, s.charCodeAt(i));
 	}
 };
 

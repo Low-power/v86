@@ -10,7 +10,7 @@
         "memory.js dma.js pit.js vga.js ps2.js pic.js rtc.js uart.js acpi.js apic.js ioapic.js hpet.js sb16.js " +
         "ne2k.js state.js virtio.js bus.js elf.js";
 
-    var BROWSER_FILES = "main.js screen.js keyboard.js mouse.js speaker.js serial.js lib.js network.js starter.js worker_bus.js serial_terminal.js term.js";
+    var BROWSER_FILES = "main.js screen.js keyboard.js mouse.js speaker.js serial.js lib.js network.js starter.js worker_bus.js serial_terminal.js term.js serial_ws.js";
     //var LIB_FILES = "esprima.js walk.js";
     var LIB_FILES = "";
 
