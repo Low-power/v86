@@ -71,19 +71,19 @@ function UART(cpu, port, bus)
 
     switch(port) {
       case 0x3F8:
-        this.com = 0;
+        this.unit = 0;
         this.irq = 4;
         break;
       case 0x2F8:
-        this.com = 1;
+        this.unit = 1;
         this.irq = 3;
         break;
       case 0x3E8:
-        this.com = 2;
+        this.unit = 2;
         this.irq = 4;
         break;
       case 0x2E8:
-        this.com = 3;
+        this.unit = 3;
         this.irq = 3;
         break;
       default:
@@ -91,7 +91,7 @@ function UART(cpu, port, bus)
         return;
     }
 
-    this.bus.register("serial" + this.com + "-input", function(data)
+    this.bus.register("serial" + String(this.unit) + "-input", function(data)
     {
         this.data_received(data);
     }, this);
@@ -318,7 +318,7 @@ UART.prototype.write_data = function(out_byte)
 
     this.ThrowInterrupt(UART_IIR_THRI);
 
-    this.bus.send("serial" + this.com + "-output-byte", out_byte);
+    this.bus.send("serial" + String(this.unit) + "-output-byte", out_byte);
 
     if(out_byte === 0xFF)
     {
@@ -327,14 +327,14 @@ UART.prototype.write_data = function(out_byte)
 
     var char = String.fromCharCode(out_byte);
 
-    this.bus.send("serial" + this.com + "-output-char", char);
+    this.bus.send("serial" + String(this.unit) + "-output-char", char);
 
     this.current_line.push(out_byte);
 
     if(char === "\n")
     {
         dbg_log("SERIAL: " + String.fromCharCode.apply("", this.current_line).trimRight());
-        this.bus.send("serial" + this.com + "-output-line", String.fromCharCode.apply("", this.current_line));
+        this.bus.send("serial" + String(this.unit) + "-output-line", String.fromCharCode.apply("", this.current_line));
         this.current_line = [];
     }
 };
