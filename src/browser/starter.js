@@ -153,7 +153,7 @@ function V86Starter(options)
 
 	if(options["serial_terminal_container"]) {
 		try {
-		this.serial_terminal_adapter = new SerialTerminalAdapter(options["serial_terminal_container"], adapter_bus, 80, 24);
+		this.serial_terminal_adapter = new SerialTerminalAdapter(options["serial_terminal_container"], adapter_bus, 0, 80, 24);
 		} catch(e) {
 		alert(e);
 		}
