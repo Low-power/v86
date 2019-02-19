@@ -839,15 +839,29 @@ V86Starter.prototype.serial0_send = function(data)
 /**
  * Send bytes to a serial port (to be received by the emulated PC).
  *
+ * @param {number} unit number
  * @param {Uint8Array} data
  * @export
  */
-V86Starter.prototype.serial_send_bytes = function(serial, data)
-{
-    for(var i = 0; i < data.length; i++)
-    {
-        this.bus.send("serial" + serial + "-input", data[i]);
-    }
+V86Starter.prototype.serial_send_bytes = function(unit, data) {
+	var target = "serial" + String(unit) + "-input";
+	for(var i = 0; i < data.length; i++) {
+		this.bus.send(target, data[i]);
+	}
+};
+
+/**
+ * Send a string to a serial port
+ *
+ * @param {number} unit number
+ * @param {string} string
+ * @export
+ */
+V86Starter.prototype.serial_send_string = function(unit, s) {
+	var target = "serial" + String(unit) + "-input";
+	for(var i = 0; i < data.length; i++) {
+		this.bus.send(target, data.charCodeAt(i));
+	}
 };
 
 /**
