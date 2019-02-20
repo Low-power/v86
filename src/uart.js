@@ -65,7 +65,7 @@ function UART(cpu, port, bus)
 
     this.irq = 0;
 
-    this.input = new ByteQueue(4096);
+    this.input = new ByteQueue(256);
 
     this.current_line = [];
 

@@ -15,15 +15,19 @@ function SerialWebSocketAdapter(url, bus, unit)
 	this.input_name = "serial" + String(unit) + "-input";
 
     this.reconnect_interval = 10000;
+/*
     this.send_queue = [];
     this.send_queue_limit = 64;
+*/
 
 	var send_to_ws = function(b) {
 		if(!this.socket || this.socket.readyState !== 1) {
+/*
 			this.send_queue.push(b);
 			if(this.send_queue.length > 2 * this.send_queue_limit) {
 				this.send_queue = this.send_queue.slice(-this.send_queue_limit);
 			}
+*/
 			this.connect();
 		} else {
 			var buffer = new Uint8Array(1);
@@ -59,18 +63,14 @@ function SerialWebSocketAdapter(url, bus, unit)
 	};
 
 	this.on_ws_open = function(e) {
-		for(var i = 0; i < this.send_queue.length; i++) {
-			this.socket.send(this.send_queue[i]);
-		}
+/*		A serial line should drop data when broken
+		this.socket.send(this.send_queue);
 		this.send_queue = [];
+*/
 	};
 
 	this.on_ws_message = function(e) {
-		//console.log("on_ws_message");
 		//console.log(typeof e.data);
-		//console.log(typeof e.data[0]);
-		//console.log(e.data);
-		//console.log(JSON.stringify(e.data));
 		var buffer = new Uint8Array(e.data);
 		for(var i = 0; i < buffer.length; i++) {
 			this.bus.send(this.input_name, buffer[i]);
