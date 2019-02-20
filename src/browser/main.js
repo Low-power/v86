@@ -591,6 +591,15 @@
             target.blur();
         };
 
+		$("disable_all_logs").onclick = function() {
+			for(var i = 0; i < log_levels.children.length; i++) {
+				var element = log_levels.children[i].firstChild;
+				if(!element) continue;
+				if(element.type !== "checkbox") continue;
+				element.checked = false;
+			}
+		};
+
         var debug_infos = $("debug_infos");
         debug_infos.textContent = "ACPI: " + (ENABLE_ACPI ? "enabled" : "disabled");
     }
