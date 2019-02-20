@@ -598,6 +598,7 @@
 				if(element.type !== "checkbox") continue;
 				element.checked = false;
 			}
+			LOG_LEVEL = 0;
 		};
 
         var debug_infos = $("debug_infos");
