@@ -273,7 +273,7 @@ Term.prototype.refresh = function(ymin, ymax)
                         outline += '</span>';
                         last_attr = this.def_attr;
                     }
-                    outline += "<a href='" + http_link_str + "'>";
+                    outline += "<a target=\"_blank\" href='" + http_link_str + "'>";
                 }
             }
             if (i == cx)  {
