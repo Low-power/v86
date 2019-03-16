@@ -118,6 +118,7 @@ function dbg_assert_failed(msg)
     debugger;
     console.trace();
 
+/*
     if(msg)
     {
         throw "Assert failed: " + msg;
@@ -126,4 +127,5 @@ function dbg_assert_failed(msg)
     {
         throw "Assert failed";
     }
+*/
 }
